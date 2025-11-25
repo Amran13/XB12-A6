@@ -68,28 +68,32 @@
             <img src="/assets/hero-leaf2.png" alt="">
         </div>
     </section>
+    <div class="flex justify-center items-center">
+        <div id="spinner" class="hidden">
+        <span class="loading loading-spinner loading-lg"></span>
+    </div>
+    </div>
 
+    <section class="bg-green-50 py-20" id="word-container">
 
-    <section class="bg-green-50 py-20">
-
-        <section class="grid grid-cols-12 gap-20 ">
+        <section class="md:grid md:grid-cols-12 gap-20 ">
             <!-- //Catogories -->
             <div class="col-span-2">
                 <h2 class="text-2xl font-bold text-center">Categories</h2>
                 <div id="catogory-container">
-                    
+
                 </div>
             </div>
 
             <!-- main tree section -->
-            <div class="col-span-8">
+            <div class="md:col-span-8">
                 <div id="plants-container">
-                    
+
                 </div>
             </div>
 
             <!-- cart  -->
-            <div class="col-span-2">
+            <div class="md:col-span-2">
                 <h2 class="text-2xl font-bold">Your Cart</h2>
                 <div id="cart-container"></div>
             </div>
@@ -99,7 +103,7 @@
         <!-- about the campaign -->
         <section>
             <h2 class="text-4xl font-bold text-center py-20">About the Campaign</h2>
-            <div class="flex justify-center items-center max-w-6xl mx-auto pb-20">
+            <div class="flex justify-center flex-col md:flex-row items-center max-w-6xl mx-auto pb-20">
                 <div class="w-1/2">
                     <img src="/assets/about.png" alt="">
                 </div>
@@ -188,28 +192,28 @@
 
 
 
-<div id="plant-modal" class="hidden fixed inset-0 bg-black  bg-opacity-50 flex justify-center items-center z-50">
-  <div class="bg-white p-6 rounded-xl w-[450px] space-y-4 relative shadow-xl">
-    <button id="close-modal" class="absolute top-3 right-3 text-xl">✖</button>
+    <div id="plant-modal" class="hidden fixed inset-0 bg-black  bg-opacity-50 flex justify-center items-center z-50">
+        <div class="bg-white p-6 rounded-xl w-[450px] space-y-4 relative shadow-xl">
+            <button id="close-modal" class="absolute top-3 right-3 text-xl">✖</button>
 
-    <img id="modal-plant-image" class="w-full h-64 object-cover rounded-lg" />
+            <img id="modal-plant-image" class="w-full h-64 object-cover rounded-lg" />
 
-    <h2 id="modal-plant-name" class="text-2xl font-bold"></h2>
+            <h2 id="modal-plant-name" class="text-2xl font-bold"></h2>
 
-    <p id="modal-plant-description" class="text-gray-700"></p>
+            <p id="modal-plant-description" class="text-gray-700"></p>
 
-    <p>
-      <span class="font-semibold">Category:</span>
-      <span id="modal-plant-category"></span>
-    </p>
+            <p>
+                <span class="font-semibold">Category:</span>
+                <span id="modal-plant-category"></span>
+            </p>
 
-    <!-- Price -->
-    <p class="text-xl font-bold text-green-600">
-       <span id="modal-plant-price"></span>
-    </p>
+            <!-- Price -->
+            <p class="text-xl font-bold text-green-600">
+                <span id="modal-plant-price"></span>
+            </p>
 
-  </div>
-</div>
+        </div>
+    </div>
     <script src="/script/app.js"></script>
 </body>
 

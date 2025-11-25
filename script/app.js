@@ -53,7 +53,17 @@ const loadModalPlant = (id) => {
       manageSpinner(false);
   })
 }
+const handleCategoryClick = (id) => {
 
+  document.querySelectorAll("[id^='category-']").forEach(btn => {
+    btn.classList.remove("active-category");
+  });
+
+  const activeBtn = document.getElementById(`category-${id}`);
+  activeBtn.classList.add("active-category");
+
+  loadCategoryPlants(id);
+};
 
 const displayCategories = (categories) => {
   const categoryContainer = document.getElementById('catogory-container')
@@ -61,7 +71,14 @@ const displayCategories = (categories) => {
   for (category of categories) {
     const btnDiv = document.createElement("div")
     btnDiv.innerHTML = `
-        <button id="category-${category.id}" onclick="loadCategoryPlants(${category.id})" class="btn btn-wide hover:bg-green-600 hover:text-white bg-green-50 border-none"> ${category.category_name} </button>
+       <button 
+        id="category-${category.id}" 
+        data-id="${category.id}"
+        onclick="handleCategoryClick(${category.id})"
+        class="btn btn-wide bg-green-50 border-none hover:bg-green-600 hover:text-white"
+      >
+        ${category.category_name}
+      </button>
         `
     categoryContainer.append(btnDiv)
   }

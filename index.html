@@ -70,17 +70,6 @@
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
     <section class="bg-green-50 py-20">
 
         <section class="grid grid-cols-12 gap-20 ">
@@ -92,9 +81,6 @@
                 </div>
             </div>
 
-
-
-
             <!-- main tree section -->
             <div class="col-span-8">
                 <div id="plants-container">
@@ -102,58 +88,12 @@
                 </div>
             </div>
 
-
-
             <!-- cart  -->
             <div class="col-span-2">
                 <h2 class="text-2xl font-bold">Your Cart</h2>
                 <div id="cart-container"></div>
             </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <!-- about the campaign -->
@@ -248,7 +188,28 @@
 
 
 
+<div id="plant-modal" class="hidden fixed inset-0 bg-black  bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-xl w-[450px] space-y-4 relative shadow-xl">
+    <button id="close-modal" class="absolute top-3 right-3 text-xl">✖</button>
 
+    <img id="modal-plant-image" class="w-full h-64 object-cover rounded-lg" />
+
+    <h2 id="modal-plant-name" class="text-2xl font-bold"></h2>
+
+    <p id="modal-plant-description" class="text-gray-700"></p>
+
+    <p>
+      <span class="font-semibold">Category:</span>
+      <span id="modal-plant-category"></span>
+    </p>
+
+    <!-- Price -->
+    <p class="text-xl font-bold text-green-600">
+       <span id="modal-plant-price"></span>
+    </p>
+
+  </div>
+</div>
     <script src="/script/app.js"></script>
 </body>
 

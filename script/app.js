@@ -24,6 +24,13 @@ const loadCategoryPlants = (id) => {
 };
 
 
+const loadModalPlant = (id) => {
+  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+  .then(res => res.json())
+  .then(data => displayModal(data.plants))
+}
+
+
 const displayCategories = (categories) => {
   const categoryContainer = document.getElementById('catogory-container')
   categoryContainer.innerHTML = ""
@@ -42,7 +49,7 @@ const displayPlants = (plants) => {
   plantsContainer.innerHTML = ""
   for (plant of plants) {
     const cardDiv = document.createElement("div")
-    cardDiv.setAttribute("class", "card bg-base-100 w-96 h-[600px] shadow-sm")
+    cardDiv.setAttribute("class", "card bg-base-100 w-[360px] h-[600px] shadow-sm")
     cardDiv.innerHTML = `
   <figure>
     <img class="w-96 h-96"
@@ -50,7 +57,7 @@ const displayPlants = (plants) => {
       alt="Plant" />
   </figure>
   <div class="card-body space-y-2">
-    <h2 class="card-title font-bold text-xl">${plant.name}</h2>
+    <h2 id="plant-${plant.id}" onclick="displayModal(${plant.id})" class="card-title font-bold text-xl cursor-pointer">${plant.name}</h2>
     <p> ${plant.description} </p>
     <div class="flex justify-between items-center">
                     <div>
@@ -83,7 +90,7 @@ const displayCategoryPlants = (plants) => {
       alt="Plant" />
   </figure>
   <div class="card-body space-y-2">
-    <h2 class="card-title font-bold text-xl">${plant.name}</h2>
+    <h2 id="plant-${plant.id}" onclick="displayModal(${plant.id})" class="card-title font-bold text-xl cursor-pointer" class="card-title font-bold text-xl">${plant.name}</h2>
     <p> ${plant.description} </p>
     <div class="flex justify-between items-center">
                     <div>
@@ -101,7 +108,40 @@ const displayCategoryPlants = (plants) => {
   }
 }
 
+const displayModal = (id) => {
+  // Fetch plant data by ID
+  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      const plant = data.plants; // Assuming the API returns an array of plants
+      console.log(plant)
+      // Get modal elements
+      const modal = document.getElementById('plant-modal');
+      const closeModalButton = document.getElementById('close-modal');
+      
+      // Set modal content
+      document.getElementById('modal-plant-name').textContent = plant.name;
+      document.getElementById('modal-plant-image').src = plant.image;
+      document.getElementById('modal-plant-description').textContent = plant.description;
+      document.getElementById('modal-plant-category').textContent = plant.category;
+      document.getElementById('modal-plant-price').textContent = `৳ ${plant.price}`;
 
+      // Show modal by removing 'hidden' class
+      modal.classList.remove('hidden');
+
+      // Close modal when the close button is clicked
+      closeModalButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+
+      // Optionally, close the modal when clicking outside of it
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+}
 
 
 loadCategories()
